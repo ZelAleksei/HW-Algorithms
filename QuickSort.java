@@ -1,6 +1,6 @@
 package org.example;
 
-public class quickSort {
+public class QuickSort {
 
     /**
      * Алгоритм быстрой сортировки или Хоара
