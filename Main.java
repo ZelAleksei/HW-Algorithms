@@ -22,6 +22,13 @@ public class Main {
         elapsedTimeInSeconds = (endTime - startTime) / 1000000000.0; // узнаём разницу начала и окончания сортировки и переводим в секунды
         System.out.println("\nВремя выполнения пузырьковой сортировки:" + elapsedTimeInSeconds + " секунд");
 
+        quickSort qs = new quickSort();
+        startTime = System.nanoTime();
+        qs.qSort(testArray, testArray[0],testArray.length-1 );
+        endTime = System.nanoTime();
+        elapsedTimeInSeconds = (endTime - startTime) / 1000000000.0; // узнаём разницу начала и окончания сортировки и переводим в секунды
+        System.out.println("\nВремя выполнения сортировки Хоара (Быстрая сортировка) :" + elapsedTimeInSeconds + " секунд");
+
         startTime = System.nanoTime();
         Arrays.sort(testArray);
         endTime = System.nanoTime();
