@@ -10,7 +10,7 @@ public class InsertionSort {
                 array[j] = key;
             }
         }
-        System.out.println("\\n Отсортированный массив (Метод Хоара)");
+        System.out.println("\n Отсортированный массив (метод вставки)");
         for (int number:array){
             System.out.print(number + " ");
         }
