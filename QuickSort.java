@@ -9,23 +9,20 @@ public class QuickSort {
      * @param low   - нижняя граница массива
      * @param hight - верхняя граница массива
      */
-    public static void qSort(int[] array, int low, int hight) {
-        if (array.length == 0 || low >= hight) {
+    public static int[] qSort(int[] array, int low, int hight) {
+        if (low < hight) {
             int pivot = partition(array, low, hight); //вызываем функцию для разделения массива
             qSort(array, low, pivot - 1); //рекурсивно вызывает функцию для сортировки левой части
             qSort(array, pivot + 1, hight); //рекурсивно вызываем функцию для сортировки правой части
         }
-
-        System.out.println("\n Отсортированный массив (Метод Хоара)"); //добавлен вывод массива для проверки сортировки
-        for (int number:array) {
-            System.out.print(number+" ");
-        }
+        return array;
     }
 
     /**
      * Функция деления массива
+     *
      * @param array - массив
-     * @param low = нидняя граница
+     * @param low   = нидняя граница
      * @param hight - вверхняя границв
      * @return
      */
@@ -33,7 +30,7 @@ public class QuickSort {
         int pivot = array[hight]; // в качестве опорно элемента массива выбираем последний
         int i = (low - 1);
 
-        for (int j = low; j < hight - 1; j++) { //проходим по массиву и меняем эелементы местами, которые меньше опорного
+        for (int j = low; j <= hight; j++) { //проходим по массиву и меняем эелементы местами, которые меньше опорного
             if (array[j] < pivot) {
                 i++;
                 swap(array, i, j);
@@ -49,3 +46,5 @@ public class QuickSort {
         array[j] = temp;
     }
 }
+
+

@@ -13,7 +13,7 @@ public class RandomArray {
         Random random = new Random();
 
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt(200);
+            array[i] = random.nextInt(100000);
         }
         return array;
     }

@@ -5,36 +5,51 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         RandomArray random = new RandomArray(); // создаём экземпляр класса RandomArray
-        int[] testArray = random.createArray(100); //создаём массив элементов с типом int
-                                                            // количество устанавливается переданным аргументом
+        int[] testArray = random.createArray(1000); //создаём массив элементов с типом int
+        // количество устанавливается переданным аргументом
 
-        BubleSort bs = new BubleSort(); // создаём экземпляр класса сортировки пузырьком
+        BubbleSort bs = new BubbleSort(); // создаём экземпляр класса сортировки пузырьком
         long startTime = System.nanoTime(); // засекаем время начала выполнения сортировки
-        bs.sort(testArray); // сортируем "пузырьком"
+        int[] sortedArray = bs.sort(testArray); // сортируем "пузырьком"
         long endTime = System.nanoTime(); // засекаем время окончания сортировки
-        System.out.println("\nВремя выполнения пузырьковой сортировки:" + (endTime - startTime) / 1000000000.0 + " секунд");
+//        arrayOutput(sortedArray, "Пузырька");
+        algorithmTimeOutput(startTime, endTime, "Пузырька");
 
         SelectionSort ssort = new SelectionSort(); // создаём экземпляр класса сортировки "выборкой"
         startTime = System.nanoTime(); // засекаем время начала выполнения сортировки
-        ssort.sort(testArray); // сортируем "выборкой"
+        sortedArray = ssort.sort(testArray); // сортируем "выборкой"
         endTime = System.nanoTime(); // засекаем время окончания сортировки
-        System.out.println("\nВремя выполнения пузырьковой сортировки:" + ((endTime - startTime) / 1000000000.0) + " секунд");
+//        arrayOutput(sortedArray, "Выборки");
+        algorithmTimeOutput(startTime, endTime, "Выборки");
 
         QuickSort qs = new QuickSort();
         startTime = System.nanoTime();
-        qs.qSort(testArray, testArray[0],testArray.length-1 );
+        sortedArray = qs.qSort(testArray, testArray[0], testArray.length - 1);
         endTime = System.nanoTime();
-        System.out.println("\nВремя выполнения сортировки Хоара (Быстрая сортировка) :" + ((endTime - startTime) / 1000000000.0) + " секунд");
+//        arrayOutput(sortedArray, "Хоара (быстрая сортирока)");
+        algorithmTimeOutput(startTime, endTime, "Хоара (быстрая сортирока)");
 
         InsertionSort inssort = new InsertionSort();
         startTime = System.nanoTime();
-        inssort.sort(testArray);
+        sortedArray = inssort.sort(testArray);
         endTime = System.nanoTime();
-        System.out.println("\nВремя выполнения сортировки вставки :" + ((endTime - startTime) / 1000000000.0) + " секунд");
+//        arrayOutput(sortedArray, "Вставки");
+        algorithmTimeOutput(startTime, endTime, "Вставки");
 
         startTime = System.nanoTime();
         Arrays.sort(testArray);
         endTime = System.nanoTime();
-        System.out.println("\nВремя выполнения сортировки Arrays.sort() :" + ((endTime - startTime) / 1000000000.0) + " секунд");
+        algorithmTimeOutput(startTime, endTime, "Arrays.sort");
+    }
+
+    public static void algorithmTimeOutput(long startTime, long endTime, String nameMethod) {
+        System.out.println("Время выполнения сортировки методом " + nameMethod + " : " + ((endTime - startTime) / 1000000000.0) + " секунд");
+    }
+
+    public static void arrayOutput(int[] array, String nameMethod) {
+        System.out.println("Отсортированный массив методом " + nameMethod); //добавлен вывод массива для проверки сортировки
+        for (int number : array) {
+            System.out.print(number + " ");
+        }
     }
 }
